@@ -85,8 +85,8 @@ export default function Filtros() {
                 <div className='col-md-8 col-12 d-flex justify-content-between m-3 conteudo align-items-center p-3'>
                   <p style={{ textDecoration: todo.completed ? "line-through" : "none" }}>{todo.text}</p>
                   <div className='d-flex flex-md-row flex-column'>
-                    <Button style={{ backgroundColor: todo.completed ? "#00ff4c" : "whitesmoke", minWidth: '40px' }} className="" funcao={() => setTaskList(Funcoes.toggle(todo.id, taskList))}><img src='check-square-fill.svg' /></Button>
-                    <Button className='button_remove' funcao={() => setTaskList(Funcoes.remove(taskList, todo.id))}><img src='trash-fill.svg' /></Button>
+                    <Button style={{ backgroundColor: todo.completed ? "#00ff4c" : "whitesmoke", minWidth: '40px' }} className="" funcao={() => setTaskList(Funcoes.toggle(todo.id, taskList))}><i class="bi bi-check-square-fill"></i></Button>
+                    <Button className='button_remove' funcao={() => setTaskList(Funcoes.remove(taskList, todo.id))}><i class="bi bi-trash-fill"></i></Button>
                   </div>
                 </div>
               </div>
@@ -94,8 +94,6 @@ export default function Filtros() {
           })}
         </div>
       </div>
-
-
     </div>
   )
 
