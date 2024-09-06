@@ -1,11 +1,10 @@
+
 import './App.css';
-import Filtros from './components/filtros'
-
+import Filtros from './Components/filtros';
 function App() {
-
   return (
     <div className='all'>
-      <Filtros />
+      <Filtros/>
     </div>
 
   )

@@ -26,9 +26,10 @@ const controller = {
     },
 
     addItem: function (input, list, clean) {
-        let todos = []
+        let todos = [...list]
+        let data = crypto.randomUUID();
         if (input.trim() !== '') {
-            const newItem = { id: list.lenght + 1, text: input, completed: false }
+            const newItem = { id: data, text: input, completed: false }
             todos = [...list, newItem]
         }
         clean('')

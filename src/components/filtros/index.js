@@ -1,7 +1,6 @@
 import Button from '../button';
 import Funcoes from '../funcao';
 import { useState, useEffect } from 'react'
-
 export default function Filtros() {
   const [taskList, setTaskList] = useState([])
   const [dados, setDados] = useState([])
@@ -57,8 +56,6 @@ export default function Filtros() {
         </div>
 
 
-
-
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
@@ -71,11 +68,12 @@ export default function Filtros() {
 
               </div>
               <div className="modal-footer">
-                <Button type="button" data-bs-dismiss="modal" className='button_create' funcao={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}><img src="plus-square.svg" /></Button>
+                <Button type="button" data-bs-dismiss="modal" className='button_create' funcao={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}><i class="bi bi-plus-square"></i></Button>
               </div>
             </div>
           </div>
         </div>
+        
 
         <div className='global'>
           {dados2.map((todo, index) => {
