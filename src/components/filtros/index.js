@@ -1,5 +1,10 @@
-import Button from '../button';
 import Funcoes from '../funcao';
+import Criar from   '../../pages/criar.js';
+import Buscar from '../../pages/buscar.js';
+import Filtrar from '../../pages/filtrar.js';
+import Ordenar from '../../pages/ordernar.js';
+import Lista from '../../pages/lista.js';
+
 import { useState, useEffect } from 'react'
 export default function Filtros() {
   const [taskList, setTaskList] = useState([])
@@ -24,74 +29,36 @@ export default function Filtros() {
   const dados2 = findValue ? dados.filter(item => item.text.toLowerCase().includes(findValue.toLowerCase())) : dados
   return (
     <div>
-      <div>
         <div className='height-top d-flex flex-column align-items-center'>
-          <div className='col-md-7 col-11 d-flex justify-content-between mt-4 align-items-end height'>
-            <h3 className='color'>To Do List</h3>
-            <div className=''>
-              <Button funcao={() => Funcoes.sortAsc('asc', taskList, sortBy, setSortBy, setDados)}>ASC</Button>
-              <Button funcao={() => Funcoes.sortDesc('desc', taskList, sortBy, setSortBy, setDados)}>DESC</Button>
-            </div>
-          </div>
-          <div className='col-md-7 col-11 d-flex justify-content-between align-items-end height'>
-            <h3 className='color'>Filtrar</h3>
-            <div>
-              <Button funcao={() => Funcoes.filterTask('completed', taskList, setFiltered, setDados, findValue)}>Completo</Button>
-              <Button funcao={() => Funcoes.filterTask('incompleted', taskList, setFiltered, setDados, findValue)}>Incompleto</Button>
-              <Button funcao={() => Funcoes.filterTask('all', taskList, setFiltered, setDados, findValue)}>Todos</Button>
-            </div>
-          </div>
-          <div className='d-flex color col-md-7 col-11 justify-content-start flex-column'>
-            <h3>Buscar</h3>
-            <input type='text' value={findValue} onChange={(e) => {
-              setFindValue(e.target.value)
-            }} />
-          </div>
+          <Ordenar
+            asc={() => Funcoes.sortAsc('asc', taskList, sortBy, setSortBy, setDados)}
+            desc={() => Funcoes.sortDesc('desc', taskList, sortBy, setSortBy, setDados)}
+          />
+
+          <Filtrar
+            completo={() => Funcoes.filterTask('completed', taskList, setFiltered, setDados, findValue)}
+            incompleto={() => Funcoes.filterTask('incompleted', taskList, setFiltered, setDados, findValue)}
+            todos={() => Funcoes.filterTask('all', taskList, setFiltered, setDados, findValue)}
+          />
+
+          <Buscar
+            findValue={findValue}
+            atualizar={(e) => { setFindValue(e.target.value) }}
+          />
         </div>
 
-        <div className="d-flex flex-column col-md-7 col-11 margin">
-          <div>
-            <Button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Criar tarefa">Criar tarefa</Button>
-          </div>
-        </div>
+        <Criar
+          inputValue={inputValue}
+          setInputValue={(e) => setInputValue(e.target.value)}
+          criar={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}
+        />
 
-
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Crie sua tarefa</h5>
-                <Button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></Button>
-              </div>
-              <div className="modal-body">
-                <input type="textarea" className='w-100' value={inputValue} onChange={(e) => setInputValue(e.target.value)} aria-label="Recipient's username" aria-describedby="basic-addon2" />
-
-              </div>
-              <div className="modal-footer">
-                <Button type="button" data-bs-dismiss="modal" className='button_create' funcao={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}><i class="bi bi-plus-square"></i></Button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-        <div className='global'>
-          {dados2.map((todo, index) => {
-            return (
-              <div key={index} className="d-flex col-10 m-auto justify-content-center aling-items-center section">
-
-                <div className='col-md-8 col-12 d-flex justify-content-between m-3 conteudo align-items-center p-3'>
-                  <p style={{ textDecoration: todo.completed ? "line-through" : "none" }}>{todo.text}</p>
-                  <div className='d-flex flex-md-row flex-column'>
-                    <Button style={{ backgroundColor: todo.completed ? "#00ff4c" : "whitesmoke", minWidth: '40px' }} className="" funcao={() => setTaskList(Funcoes.toggle(todo.id, taskList))}><i class="bi bi-check-square-fill"></i></Button>
-                    <Button className='button_remove' funcao={() => setTaskList(Funcoes.remove(taskList, todo.id))}><i class="bi bi-trash-fill"></i></Button>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+        <Lista
+          dados = {dados2}
+          complete = {setTaskList}
+          lista={taskList}
+          remover={setTaskList}
+        />
     </div>
   )
 

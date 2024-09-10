@@ -1,12 +1,11 @@
 
 import './App.css';
-import Filtros from './Components/filtros';
+import Rotas from './routes';
 function App() {
   return (
     <div className='all'>
-      <Filtros/>
+      <Rotas></Rotas>
     </div>
-
   )
 }
 
