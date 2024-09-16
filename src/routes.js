@@ -99,10 +99,6 @@ export default function Rotas() {
                         lista={taskList}
                         remover={setTaskList}
                     />
-
-                    <div className=' borda col-4'>
-                    <input type='text' className='col-12 virar' ></input>
-                    </div>
                 
             </BrowserRouter>
         </div>
