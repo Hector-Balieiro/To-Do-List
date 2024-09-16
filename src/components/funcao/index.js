@@ -59,19 +59,19 @@ const controller = {
         dataShow(filterTemp)
     },
 
-    sortAsc: function (status, list, sortBy, sortStatus, sortData) {
-        if (status === 'asc' && sortBy === false) {
+    sortAsc: function (status, list, sortStatus, sortData) {
+        if (status === 'asc') {
             sortData(list.sort((a, b) => a.text.localeCompare(b.text)))
             sortStatus(true)
 
         }
     },
 
-    sortDesc: function (status, list, sortBy, sortStatus, sortData) {
-        if (status === 'desc' && sortBy === true) {
-
-            sortStatus(false)
+    sortDesc: function (status, list, sortStatus, sortData) {
+        if (status === 'desc') {
             sortData(list.sort((a, b) => b.text.localeCompare(a.text)))
+            sortStatus(false)
+            
         }
     }
 

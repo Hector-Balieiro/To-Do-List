@@ -13,7 +13,7 @@ export default function Rotas() {
     const [dados, setDados] = useState([])
     const [inputValue, setInputValue] = useState('')
     const [filtered, setFiltered] = useState('all')
-    const [sortBy, setSortBy] = useState(false)
+    const [sortBy, setSortBy] = useState(true)
     const [findValue, setFindValue] = useState()
 
     useEffect(() => {
@@ -75,8 +75,8 @@ export default function Rotas() {
 
                 <Routes>
                     <Route element={<Ordenar
-                        asc={() => Funcoes.sortAsc('asc', dados2, sortBy, setSortBy, setDados)}
-                        desc={() => Funcoes.sortDesc('desc', dados2, sortBy, setSortBy, setDados)}
+                        asc={() => Funcoes.sortAsc('asc', dados2, setSortBy, setDados)}
+                        desc={() => Funcoes.sortDesc('desc', dados2, setSortBy, setDados)}
                     />} path="/ordenar" />
 
                     <Route element={<Filtrar
@@ -99,6 +99,7 @@ export default function Rotas() {
                         lista={taskList}
                         remover={setTaskList}
                     />
+
                 
             </BrowserRouter>
         </div>
