@@ -34,61 +34,47 @@ export default function Rotas() {
     return (
         <div>
             <BrowserRouter>
-                <div className='col-12 height-top d-flex align-items-center justify-content-center'>
-                    <nav class="navbar bg-body-tertiary">
-                        <div class="container-fluid">
-                            <Criar
-                        inputValue={inputValue}
-                        setInputValue={(e) => setInputValue(e.target.value)}
-                        criar={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}
-                    />
+                <div className='container'>
+                    <div className='row'>
+                        <div class="col-12 height-top d-flex justify-content-center gap-3">
+                            <nav class="navbar bg-body-tertiary">
+                                <Criar
+                                    inputValue={inputValue}
+                                    setInputValue={(e) => setInputValue(e.target.value)}
+                                    criar={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}
+                                />
+                            </nav>
+
+                            <nav class="navbar bg-body-tertiary">
+                                    <Link to='/ordenar' className='text-decoration-none btn btn-outline-secondary button-size'>Ordenar</Link>
+                            </nav>
+                                
+                            <nav class="navbar bg-body-tertiary">
+                                    <Link to='/filtrar' className='text-decoration-none btn btn-outline-secondary button-size'>Filtrar</Link>
+                            </nav>
+
+                            <nav class="navbar bg-body-tertiary">
+                                    <Link to='/buscar' className='text-decoration-none btn btn-outline-secondary button-size'>Buscar</Link>
+                            </nav>
                         </div>
-                    </nav>
-
-
-                    <nav class="navbar bg-body-tertiary">
-                        <div class="container-fluid">
-                            <Link to='/ordenar' className='text-decoration-none btn btn-outline-secondary btn-lg'>Ordenar</Link>
-                        </div>
-                    </nav>
-
-                    <nav class="navbar bg-body-tertiary">
-                        <div class="container-fluid">
-                            <Link to='/filtrar' className='text-decoration-none btn btn-outline-secondary btn-lg'>Filtrar</Link>
-                        </div>
-                    </nav>
-
-
-                    <nav class="navbar bg-body-tertiary">
-                        <div class="container-fluid">
-                            <Link to='/buscar' className='text-decoration-none btn btn-outline-secondary btn-lg'>Buscar</Link>
-                        </div>
-                    </nav>
-
-
-
-                </div>
-
-                
-
-
+                    </div>
 
                 <Routes>
                     <Route element={<Ordenar
                         asc={() => Funcoes.sortAsc('asc', dados2, setSortBy, setDados)}
                         desc={() => Funcoes.sortDesc('desc', dados2, setSortBy, setDados)}
-                    />} path="/ordenar" />
+                        />} path="/ordenar" />
 
                     <Route element={<Filtrar
                         completo={() => Funcoes.filterTask('completed', taskList, setFiltered, setDados, findValue)}
                         incompleto={() => Funcoes.filterTask('incompleted', taskList, setFiltered, setDados, findValue)}
                         todos={() => Funcoes.filterTask('all', taskList, setFiltered, setDados, findValue)}
-                    />} path="/filtrar" />
+                        />} path="/filtrar" />
 
                     <Route element={<Buscar
                         findValue={findValue}
                         atualizar={(e) => { setFindValue(e.target.value) }}
-                    />} path="/buscar" />
+                        />} path="/buscar" />
 
 
                 </Routes>
@@ -98,9 +84,10 @@ export default function Rotas() {
                         complete={setTaskList}
                         lista={taskList}
                         remover={setTaskList}
-                    />
+                        />
 
                 
+                </div>
             </BrowserRouter>
         </div>
     )

@@ -26,7 +26,7 @@ p[data-completed="true"] {
 
 
 .borda{
-    border:1px solid red
+    border:5px solid red
   }
   
   .global{
@@ -86,4 +86,23 @@ p[data-completed="true"] {
 
   .button_create:hover {
     box-shadow: none;
+  }
+  :root{
+    --bs-btn-padding-y: 10px !important;
+    --bs-btn-padding-x: 25px !important;
+    --bs-btn-font-size: 100rem !important;
+    --color: white;
+  }
+
+  .button-size{
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x)
+  }
+
+
+
+  @media (min-width:350px) and (max-width:540px){
+    .button-size{
+      --bs-btn-padding-y: .25rem !important;
+      --bs-btn-padding-x: .5rem !important;
+    }
   }

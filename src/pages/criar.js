@@ -4,7 +4,7 @@ export default function Criar(props){
     return(
         <div>
           
-            <Button type="button" className='text-decoration-none btn btn-outline-secondary btn-lg ' data-bs-toggle="modal" data-bs-target="#exampleModal" title="Criar tarefa">Criar</Button>
+            <Button type="button" className='text-decoration-none btn btn-outline-secondary button-size' data-bs-toggle="modal" data-bs-target="#exampleModal" title="Criar tarefa">Criar</Button>
 
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
