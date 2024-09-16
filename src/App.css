@@ -5,6 +5,20 @@
 .incompleto{
     text-decoration: none;
 }
+.input-interno {
+  outline: 6px double rgb(255, 255, 255);
+  border: none;
+  border-radius:10px ;
+  padding: 0px 5px;
+}
+
+.virar{
+  rotate: 108deg;
+  width: 1px;
+  word-wrap: break-word;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
 
 p[data-completed="true"] {
     text-decoration: line-through;
@@ -65,7 +79,11 @@ p[data-completed="true"] {
   }
   
   .button_create{
-    background-color: #00ff4c;
-    min-width:35px;
-    border-radius: 10px;
+    background-color: #00ff4c !important;
+    border: 2px solid black;
+    box-shadow:1px 3px 3px black;
+  }
+
+  .button_create:hover {
+    box-shadow: none;
   }

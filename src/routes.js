@@ -34,29 +34,34 @@ export default function Rotas() {
     return (
         <div>
             <BrowserRouter>
-                <div className='height-top d-flex flex-column align-items-center'>
+                <div className='col-12 height-top d-flex align-items-center justify-content-center'>
                     <nav class="navbar bg-body-tertiary">
                         <div class="container-fluid">
-                            <Link to='/criar'>Criar</Link>
+                            <Criar
+                        inputValue={inputValue}
+                        setInputValue={(e) => setInputValue(e.target.value)}
+                        criar={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}
+                    />
                         </div>
                     </nav>
 
 
                     <nav class="navbar bg-body-tertiary">
                         <div class="container-fluid">
-                            <Link to='/ordenar'>Ordenar</Link>
+                            <Link to='/ordenar' className='text-decoration-none btn btn-outline-secondary btn-lg'>Ordenar</Link>
                         </div>
                     </nav>
+
                     <nav class="navbar bg-body-tertiary">
                         <div class="container-fluid">
-                            <Link to='/filtrar'>Filtrar</Link>
+                            <Link to='/filtrar' className='text-decoration-none btn btn-outline-secondary btn-lg'>Filtrar</Link>
                         </div>
                     </nav>
 
 
                     <nav class="navbar bg-body-tertiary">
                         <div class="container-fluid">
-                            <Link to='/buscar'>Buscar</Link>
+                            <Link to='/buscar' className='text-decoration-none btn btn-outline-secondary btn-lg'>Buscar</Link>
                         </div>
                     </nav>
 
@@ -70,8 +75,8 @@ export default function Rotas() {
 
                 <Routes>
                     <Route element={<Ordenar
-                        asc={() => Funcoes.sortAsc('asc', taskList, sortBy, setSortBy, setDados)}
-                        desc={() => Funcoes.sortDesc('desc', taskList, sortBy, setSortBy, setDados)}
+                        asc={() => Funcoes.sortAsc('asc', dados2, sortBy, setSortBy, setDados)}
+                        desc={() => Funcoes.sortDesc('desc', dados2, sortBy, setSortBy, setDados)}
                     />} path="/ordenar" />
 
                     <Route element={<Filtrar
@@ -85,11 +90,6 @@ export default function Rotas() {
                         atualizar={(e) => { setFindValue(e.target.value) }}
                     />} path="/buscar" />
 
-                    <Route element={<Criar
-                        inputValue={inputValue}
-                        setInputValue={(e) => setInputValue(e.target.value)}
-                        criar={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}
-                    />} path="/criar" />
 
                 </Routes>
 
@@ -99,6 +99,11 @@ export default function Rotas() {
                         lista={taskList}
                         remover={setTaskList}
                     />
+
+                    <div className=' borda col-4'>
+                    <input type='text' className='col-12 virar' ></input>
+                    </div>
+                
             </BrowserRouter>
         </div>
     )

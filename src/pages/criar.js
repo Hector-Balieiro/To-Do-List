@@ -3,11 +3,8 @@ import Button  from '../components/button';
 export default function Criar(props){
     return(
         <div>
-            <div className="d-flex flex-column col-md-7 col-11 margin">
-          <div>
-            <Button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Criar tarefa">Criar tarefa</Button>
-          </div>
-        </div>
+          
+            <Button type="button" className='text-decoration-none btn btn-outline-secondary btn-lg ' data-bs-toggle="modal" data-bs-target="#exampleModal" title="Criar tarefa">Criar</Button>
 
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -22,7 +19,7 @@ export default function Criar(props){
 
               </div>
               <div className="modal-footer">
-                <Button type="button" data-bs-dismiss="modal" className='button_create' funcao={props.criar}><i class="bi bi-plus-square"></i></Button>
+                <Button type="button" data-bs-dismiss="modal" className='text-decoration-none btn button_create mx-1' funcao={props.criar}><i class="bi bi-plus-square"></i></Button>
               </div>
             </div>
           </div>
