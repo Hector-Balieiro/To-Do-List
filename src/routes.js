@@ -17,7 +17,9 @@ export default function Rotas() {
     const [findValue, setFindValue] = useState()
 
     useEffect(() => {
+        console.log(Funcoes)
         let testes = Funcoes.data()
+        
         testes.then(data => {
             setTaskList(data)
         })
@@ -30,6 +32,10 @@ export default function Rotas() {
 
     const dados2 = findValue ? dados.filter(item => item.text.toLowerCase().includes(findValue.toLowerCase())) : dados
 
+    const onChange = event =>{
+        localStorage.setItem('setData', event.target.value);
+        setInputValue(event.target.value)
+    }
 
     return (
         <div>
@@ -40,7 +46,7 @@ export default function Rotas() {
                             <nav class="navbar bg-body-tertiary">
                                 <Criar
                                     inputValue={inputValue}
-                                    setInputValue={(e) => setInputValue(e.target.value)}
+                                    setInputValue={onChange}
                                     criar={() => setTaskList(Funcoes.addItem(inputValue, taskList, setInputValue))}
                                 />
                             </nav>
