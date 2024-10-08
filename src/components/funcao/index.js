@@ -7,13 +7,18 @@ const controller = {
             let dados = await fetch(`https://jsonplaceholder.typicode.com/todos/${v}`)
             let data = await dados.json()
             varDados.push({ id: data.id, text: data.title, completed: data.completed })
-            
+
         }
 
         // localStorage.setItem("myArray", JSON.stringify(varDados))
         let dados2 = JSON.parse(localStorage.getItem("myArray"))
-        console.log(dados2)
-        return dados2  
+        if (dados2 !== null) {
+            return dados2
+        }
+        else {
+            return varDados
+        }
+
     },
 
     toggle: function (id, list) {
@@ -31,20 +36,18 @@ const controller = {
 
     addItem: function (input, list, clean) {
         let todos = [...list]
-  
-        let data = crypto.randomUUID();
+
+        let data = Math.floor(Math.random() * 10000);
         if (input.trim() !== '') {
             const newItem = { id: data, text: input, completed: false }
             todos = [...list, newItem]
-            
-            
+
+
         }
         localStorage.setItem("myArray", JSON.stringify(todos))
         let dados2 = JSON.parse(localStorage.getItem("myArray"))
         clean('')
-        console.log(dados2)
-        
-        return  dados2
+        return dados2
     },
 
     remove: function (list, id) {
@@ -84,7 +87,7 @@ const controller = {
         if (status === 'desc') {
             sortData(list.sort((a, b) => b.text.localeCompare(a.text)))
             sortStatus(false)
-            
+
         }
     }
 
