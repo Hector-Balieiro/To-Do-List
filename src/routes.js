@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Routes, Link } from 'react-router-dom';
+import { Route, HashRouter, Routes, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import Funcoes from './components/funcao';
 import Buscar from './pages/buscar.js';
@@ -39,7 +39,7 @@ export default function Rotas() {
 
     return (
         <div>
-            <BrowserRouter>
+            <HashRouter>
                 <div className='container'>
                     <div className='row'>
                         <div class="col-12 height-top d-flex justify-content-center gap-3">
@@ -94,7 +94,7 @@ export default function Rotas() {
 
                 
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         </div>
     )
 }
